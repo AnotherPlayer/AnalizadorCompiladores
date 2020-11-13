@@ -15,4 +15,6 @@ repositories {
 dependencies {
     testImplementation     'junit:junit:4.13'
     compile group: 'com.fifesoft', name: 'rsyntaxtextarea', version: '2.5.3'
+    implementation files('lib/jflex.jar')
+    implementation files('lib/jcup')
 }

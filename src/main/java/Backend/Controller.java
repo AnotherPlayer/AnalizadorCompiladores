@@ -35,8 +35,7 @@ public class Controller {
         }
     }
 
-    private void moveFiles() {
-        
+    private void moveFiles() {       
         if(Files.exists(Paths.get("sym.java"))){
             try{
                 try {

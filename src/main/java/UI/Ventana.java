@@ -5,7 +5,7 @@
  */
 package UI;
 
-import Backend.UIController;
+import Backend.Controller;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -23,14 +23,14 @@ public class Ventana extends javax.swing.JFrame {
     /**
      * Creates new form Ventana
      */
-    private UIController uicontroller;
-    private RSyntaxTextArea editor = new RSyntaxTextArea(20,60);
+    private Controller controller;
+    private RSyntaxTextArea editor = new RSyntaxTextArea(12,63);
     private JScrollPane editorScroll;
     
     public Ventana() {
         initComponents();
         editorPanel.setLayout(new CardLayout());
-        uicontroller = new UIController(this);
+        controller = new Controller(this);
         initPanel();
     }
 
@@ -45,13 +45,13 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        analizadorTxt = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        consoleTxt = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         editorPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        analizarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Analizador");
@@ -59,15 +59,15 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1.setText("Editor");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        analizadorTxt.setEditable(false);
+        analizadorTxt.setColumns(20);
+        analizadorTxt.setRows(5);
+        jScrollPane1.setViewportView(analizadorTxt);
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        consoleTxt.setEditable(false);
+        consoleTxt.setColumns(20);
+        consoleTxt.setRows(5);
+        jScrollPane2.setViewportView(consoleTxt);
 
         jLabel2.setText("Analizador");
 
@@ -84,7 +84,12 @@ public class Ventana extends javax.swing.JFrame {
             .addGap(0, 209, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Analizar");
+        analizarBtn.setText("Analizar");
+        analizarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                analizarBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,18 +102,15 @@ public class Ventana extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addComponent(jLabel2)
                         .addGap(56, 56, 56)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(analizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel3))
+                    .addComponent(editorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane2)))
-                        .addContainerGap())))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -120,12 +122,12 @@ public class Ventana extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(editorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(analizarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
@@ -135,6 +137,11 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void analizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizarBtnActionPerformed
+        analizadorTxt.setText(controller.AnalizadorLexico(editor.getText()));
+        consoleTxt.setText(controller.analizarSintaxis(editor.getText()));
+    }//GEN-LAST:event_analizarBtnActionPerformed
 
     private void initPanel(){
         editor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
@@ -181,14 +188,14 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea analizadorTxt;
+    private javax.swing.JButton analizarBtn;
+    private javax.swing.JTextArea consoleTxt;
     private javax.swing.JPanel editorPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
 }

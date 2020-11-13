@@ -16,5 +16,6 @@ dependencies {
     testImplementation     'junit:junit:4.13'
     compile group: 'com.fifesoft', name: 'rsyntaxtextarea', version: '2.5.3'
     implementation files('lib/jflex.jar')
-    implementation files('lib/jcup')
+    implementation files('lib/java_cup.jar')
+    implementation files('lib/java-cup-11.jar')
 }

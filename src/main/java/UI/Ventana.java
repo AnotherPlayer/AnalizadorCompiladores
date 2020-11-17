@@ -8,6 +8,8 @@ package UI;
 import Backend.Controller;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -105,6 +107,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         jMenuItem1.setText("Cargar Archivo");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Guardar Archivo");
@@ -174,6 +181,23 @@ public class Ventana extends javax.swing.JFrame {
         consoleTxt.setText(controller.analizarSintaxis(editor.getText()));
     }//GEN-LAST:event_analizarBtnActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // Cargar Archivo al Editor
+        JFileChooser filec = new JFileChooser();
+        int returnVal = filec.showOpenDialog(this);
+        if(returnVal == JFileChooser.APPROVE_OPTION){
+            editor.setText(arrayToString(controller.fileRead(filec.getSelectedFile().getAbsolutePath())));
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private String arrayToString(ArrayList target){
+        String resultString = "";
+        for(int i = 0; i<target.size(); i++){
+            resultString += target.get(i)+"\n";
+        }
+        return resultString;
+    }
+    
     private void initPanel(){
         editor.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         editor.setHighlightCurrentLine(false);

@@ -28,6 +28,7 @@ public class Ventana extends javax.swing.JFrame {
     private Controller controller;
     private RSyntaxTextArea editor = new RSyntaxTextArea(12,63);
     private JScrollPane editorScroll;
+    private String currentWorkingDir;
     
     public Ventana() {
         initComponents();
@@ -115,6 +116,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Guardar Archivo");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
         jMenu1.add(jSeparator1);
 
@@ -187,8 +193,19 @@ public class Ventana extends javax.swing.JFrame {
         int returnVal = filec.showOpenDialog(this);
         if(returnVal == JFileChooser.APPROVE_OPTION){
             editor.setText(arrayToString(controller.fileRead(filec.getSelectedFile().getAbsolutePath())));
+            currentWorkingDir = filec.getCurrentDirectory().toString();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // Guardar Archivo
+        JFileChooser filec = new JFileChooser();
+        int returnVal = filec.showSaveDialog(this);
+        if(returnVal == JFileChooser.APPROVE_OPTION){
+            String cr = consoleTxt.getText() + "\n\n" + analizadorTxt.getText();
+            controller.saveResult(cr, filec.getSelectedFile().getAbsolutePath());
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private String arrayToString(ArrayList target){
         String resultString = "";

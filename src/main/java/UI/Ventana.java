@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -125,6 +126,11 @@ public class Ventana extends javax.swing.JFrame {
         jMenu1.add(jSeparator1);
 
         jMenuItem3.setText("Salir");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
@@ -132,9 +138,19 @@ public class Ventana extends javax.swing.JFrame {
         jMenu2.setText("Ayuda");
 
         jMenuItem4.setText("Acerca de");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("GitHub");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
@@ -206,6 +222,32 @@ public class Ventana extends javax.swing.JFrame {
             controller.saveResult(cr, filec.getSelectedFile().getAbsolutePath());
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // Boton de Salir. Demasiado explicito.
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // Boton de Acerca De.
+        String mensaje = "<html>"
+                + "<body>"
+                + "<H2> Analizador Final </H2>"
+                + "Hecho con:<br>"
+                + "<ul type = 'circle'>"
+                + "<li> JFlex </li>"
+                + "<li> JCup </li>"
+                + "<li> RSyntaxTextArea </li>"
+                + "</ul>"
+                + "</body>"
+                + "</html> ";
+        JOptionPane.showMessageDialog(null,mensaje);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // Abre la url.
+        controller.openWebsite("https://github.com/AnotherPlayer/AnalizadorCompiladores");
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private String arrayToString(ArrayList target){
         String resultString = "";

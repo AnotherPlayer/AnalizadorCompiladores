@@ -6,10 +6,18 @@
 package Backend;
 
 import UI.Ventana;
+import java.awt.Desktop;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.StringReader;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java_cup.runtime.Symbol;
 
 /**
@@ -21,6 +29,7 @@ public class Controller {
     private String route = "./src/main/java/Backend/";
     private String[] flexFiles = {route+"LexerCup.flex",route+"lex.flex"};
     private String[] cupParams = {"-parser","Sintax",route+"Sintax.cup"};
+    private ArrayList<String> currentOpenFile;
     private Ventana ventana;
     
     public Controller(Ventana v){
@@ -33,6 +42,60 @@ public class Controller {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    public ArrayList fileRead(String path){
+        ArrayList<String> temp = new ArrayList<String>();
+        try {
+            Runnable runnable = new Runnable(){
+                public void run(){
+                    try{
+                        BufferedReader br = new BufferedReader(new FileReader(path));
+                        String line = "";
+                        while((line = br.readLine())!=null){
+                            temp.add(line);
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            };
+            Thread fileRead = new Thread(runnable);
+            fileRead.run();
+            currentOpenFile = temp;
+            return temp;
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return null;
+    }
+    
+    public void openWebsite(String url){
+        try{
+            Desktop.getDesktop().browse(new URL(url).toURI());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void saveResult(String completeResult, String path){
+        try {
+            Runnable runnable = new Runnable(){
+                public void run(){
+                    try{
+                        FileWriter fw = new FileWriter(path+".txt");
+                        fw.write(completeResult);
+                        fw.close();
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            };
+            Thread fileSave = new Thread(runnable);
+            fileSave.run();
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     private void moveFiles() {       

@@ -715,7 +715,7 @@ class LexerCup implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
-            { return new Symbol(sym.ERROR);
+            { return new Symbol(sym.ERROR, (int)yychar, yyline, yytext());
             }
             // fall through
           case 32: break;
@@ -725,147 +725,147 @@ class LexerCup implements java_cup.runtime.Scanner {
             // fall through
           case 33: break;
           case 3:
-            { return new Symbol(sym.Op_logico);
+            { return new Symbol(sym.Op_logico,(int) yychar, yyline, yytext());
             }
             // fall through
           case 34: break;
           case 4:
-            { return new Symbol(sym.Comillas);
+            { return new Symbol(sym.Comillas,(int) yychar, yyline, yytext());
             }
             // fall through
           case 35: break;
           case 5:
-            { return new Symbol(sym.Parentesis_a);
+            { return new Symbol(sym.Parentesis_a, (int)yychar, yyline, yytext());
             }
             // fall through
           case 36: break;
           case 6:
-            { return new Symbol(sym.Parentesis_c);
+            { return new Symbol(sym.Parentesis_c, (int)yychar, yyline, yytext());
             }
             // fall through
           case 37: break;
           case 7:
-            { return new Symbol(sym.Multiplicacion);
+            { return new Symbol(sym.Multiplicacion, (int)yychar, yyline, yytext());
             }
             // fall through
           case 38: break;
           case 8:
-            { return new Symbol(sym.Suma);
+            { return new Symbol(sym.Suma, (int)yychar, yyline, yytext());
             }
             // fall through
           case 39: break;
           case 9:
-            { return new Symbol(sym.Resta);
+            { return new Symbol(sym.Resta, (int)yychar, yyline, yytext());
             }
             // fall through
           case 40: break;
           case 10:
-            { return new Symbol(sym.Division);
+            { return new Symbol(sym.Division, (int)yychar, yyline, yytext());
             }
             // fall through
           case 41: break;
           case 11:
-            { return new Symbol(sym.Numero);
+            { return new Symbol(sym.Numero, (int)yychar, yyline, yytext());
             }
             // fall through
           case 42: break;
           case 12:
-            { return new Symbol(sym.P_coma);
+            { return new Symbol(sym.P_coma, (int)yychar, yyline, yytext());
             }
             // fall through
           case 43: break;
           case 13:
-            { return new Symbol(sym.Op_relacional);
+            { return new Symbol(sym.Op_relacional, (int)yychar, yyline, yytext());
             }
             // fall through
           case 44: break;
           case 14:
-            { return new Symbol(sym.Igual);
+            { return new Symbol(sym.Igual, (int)yychar, yyline, yytext());
             }
             // fall through
           case 45: break;
           case 15:
-            { return new Symbol(sym.Identificador);
+            { return new Symbol(sym.Identificador, (int)yychar, yyline, yytext());
             }
             // fall through
           case 46: break;
           case 16:
-            { return new Symbol(sym.Corchete_a);
+            { return new Symbol(sym.Corchete_a, (int)yychar, yyline, yytext());
             }
             // fall through
           case 47: break;
           case 17:
-            { return new Symbol(sym.Corchete_c);
+            { return new Symbol(sym.Corchete_c, (int)yychar, yyline, yytext());
             }
             // fall through
           case 48: break;
           case 18:
-            { return new Symbol(sym.Llave_a);
+            { return new Symbol(sym.Llave_a,(int) yychar, yyline, yytext());
             }
             // fall through
           case 49: break;
           case 19:
-            { return new Symbol(sym.Llave_c);
+            { return new Symbol(sym.Llave_c, (int)yychar, yyline, yytext());
             }
             // fall through
           case 50: break;
           case 20:
-            { return new Symbol(sym.Op_atribucion);
+            { return new Symbol(sym.Op_atribucion,(int) yychar, yyline, yytext());
             }
             // fall through
           case 51: break;
           case 21:
-            { return new Symbol(sym.Op_incremento);
+            { return new Symbol(sym.Op_incremento,(int) yychar, yyline, yytext());
             }
             // fall through
           case 52: break;
           case 22:
-            { return new Symbol(sym.Do);
+            { return new Symbol(sym.Do,(int) yychar, yyline, yytext());
             }
             // fall through
           case 53: break;
           case 23:
-            { return new Symbol(sym.If);
+            { return new Symbol(sym.If, (int)yychar, yyline, yytext());
             }
             // fall through
           case 54: break;
           case 24:
-            { return new Symbol(sym.For);
+            { return new Symbol(sym.For, (int)yychar, yyline, yytext());
             }
             // fall through
           case 55: break;
           case 25:
-            { return new Symbol(sym.Int);
+            { return new Symbol(sym.Int,(int) yychar, yyline, yytext());
             }
             // fall through
           case 56: break;
           case 26:
-            { return new Symbol(sym.T_dato);
+            { return new Symbol(sym.T_dato, (int)yychar, yyline, yytext());
             }
             // fall through
           case 57: break;
           case 27:
-            { return new Symbol(sym.Else);
+            { return new Symbol(sym.Else, (int)yychar, yyline, yytext());
             }
             // fall through
           case 58: break;
           case 28:
-            { return new Symbol(sym.Main);
+            { return new Symbol(sym.Main, (int)yychar, yyline, yytext());
             }
             // fall through
           case 59: break;
           case 29:
-            { return new Symbol(sym.Op_booleano);
+            { return new Symbol(sym.Op_booleano, (int)yychar, yyline, yytext());
             }
             // fall through
           case 60: break;
           case 30:
-            { return new Symbol(sym.While);
+            { return new Symbol(sym.While, (int)yychar, yyline, yytext());
             }
             // fall through
           case 61: break;
           case 31:
-            { return new Symbol(sym.Cadena);
+            { return new Symbol(sym.Cadena,(int) yychar, yyline, yytext());
             }
             // fall through
           case 62: break;

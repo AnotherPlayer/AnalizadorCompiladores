@@ -249,8 +249,7 @@ public class Controller {
             return resultado;
         }catch(Exception e){
             Symbol sym = s.getS();
-            resultado = "Error de Sintaxis. Linea: " + (sym.right + 1) + " Columna: "+(sym.left + 1) +", Texto: \""+ sym.value + "\"";
-            e.printStackTrace();
+            resultado = "Error de Sintaxis. Linea: " + (sym.right + 1) + " Columna: "+(sym.left + 1);
         }
         return resultado;
     }

@@ -8,3 +8,5 @@ descargar la ultima revision del programa.
 Cambios posibles a futuro:
 - Corregir la limpieza del codigo
 - Corregir errores de QoL (relacionado a la carga de archivos principalmente).
+
+![img](https://i.gyazo.com/b43b93c823660e507138de1e8a79b28b.png)
